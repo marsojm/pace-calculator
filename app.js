@@ -104,7 +104,7 @@ class UIController {
         if (minutes === undefined || seconds === undefined) {
             pace = "--:--"; 
         } else {
-            pace = `${minutes}:${seconds}`;
+            pace = `${minutes}:${seconds.padStart(2,'0')}`;
         }
         document.querySelector(this.uiElements.SWIM_PACE).innerHTML = `${pace} min/100m`; 
     }
@@ -122,7 +122,7 @@ class UIController {
         if (minutes === undefined || seconds === undefined) {
             pace = "--:--"; 
         } else {
-            pace = `${minutes}:${seconds}`;
+            pace = `${minutes}:${seconds.padStart(2,'0')}`;
         }
         document.querySelector(this.uiElements.RUN_PACE).innerHTML = `${pace} min/km`; 
     }
