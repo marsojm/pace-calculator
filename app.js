@@ -30,6 +30,20 @@ class PaceCalculator {
 
         return paceInHours;
     }
+
+    calculateRunPace(dist, h, m, s) {
+        if (dist === 0) {
+            return [0,0];
+        }
+
+        const totalSeconds = (h * 60 * 60) + (m * 60) + s;
+
+        const paceInSeconds = (totalSeconds/dist);
+        const minutes = Math.floor(paceInSeconds / 60);
+        const seconds = Math.round(paceInSeconds - (minutes * 60));
+
+        return [minutes, seconds];
+    }
 }
 
 class UIController {
@@ -47,7 +61,14 @@ class UIController {
             BIKE_MINUTES: '#bike_minutes',
             BIKE_SECONDS: '#bike_seconds',
             BIKE_PACE: '.bike-pace',
-            BIKE_PACE_BTN: '.btn-calculate-bike-pace'
+            BIKE_PACE_BTN: '.btn-calculate-bike-pace',
+
+            RUN_DISTANCE: '#run_distance',
+            RUN_HOURS: '#run_hours',
+            RUN_MINUTES: '#run_minutes',
+            RUN_SECONDS: '#run_seconds',
+            RUN_PACE: '.run-pace',
+            RUN_PACE_BTN: '.btn-calculate-run-pace'
         };
     }
 
@@ -69,6 +90,15 @@ class UIController {
         return [distance, hours, minutes, seconds];
     }
 
+    getRunFieldValues() {
+        let distance = document.querySelector(this.uiElements.RUN_DISTANCE).value;
+        let hours = document.querySelector(this.uiElements.RUN_HOURS).value;
+        let minutes = document.querySelector(this.uiElements.RUN_MINUTES).value;
+        let seconds = document.querySelector(this.uiElements.RUN_SECONDS).value;
+
+        return [distance, hours, minutes, seconds];
+    }
+
     updateSwimPace(minutes, seconds) {
         let pace = null;
         if (minutes === undefined || seconds === undefined) {
@@ -85,6 +115,16 @@ class UIController {
             pace = "--"; 
         } 
         document.querySelector(this.uiElements.BIKE_PACE).innerHTML = `${pace} km/h`; 
+    }
+
+    updateRunPace(minutes, seconds) {
+        let pace = null;
+        if (minutes === undefined || seconds === undefined) {
+            pace = "--:--"; 
+        } else {
+            pace = `${minutes}:${seconds}`;
+        }
+        document.querySelector(this.uiElements.RUN_PACE).innerHTML = `${pace} min/km`; 
     }
 }
 
@@ -119,10 +159,19 @@ class App {
 
     calculateBikePace() {
         const [distStr, hStr, mStr, sStr] = this.uiCtrl.getBikeFieldValues();
-        const bikeParams = [this.toFloat(distStr), this.toInt(hStr), this.toInt(mStr), this.toInt(sStr)]
+        const bikeParams = [this.toFloat(distStr), this.toInt(hStr), this.toInt(mStr), this.toInt(sStr)];
 
         const bikePace = this.paceCalculator.calculateBikePace(...bikeParams);
         this.uiCtrl.updateBikePace(bikePace.toFixed(2));
+    }
+
+    calculateRunPace() {
+        const [distStr, hStr, mStr, sStr] = this.uiCtrl.getRunFieldValues();
+        const runParams = [this.toFloat(distStr), this.toInt(hStr), this.toInt(mStr), this.toInt(sStr)];
+
+        const runValues = this.paceCalculator.calculateRunPace(...runParams);
+
+        this.uiCtrl.updateRunPace(...runValues.map(v => v.toString()));
     }
 
     initEventHandlers() {
@@ -133,6 +182,10 @@ class App {
 
         document.querySelector(this.uiCtrl.uiElements.BIKE_PACE_BTN).addEventListener('click', function() {
             self.calculateBikePace();
+        });
+
+        document.querySelector(this.uiCtrl.uiElements.RUN_PACE_BTN).addEventListener('click', function() {
+            self.calculateRunPace();
         });
     }
 }
