@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -14,34 +16,36 @@
 <body class="blue-grey lighten-5">
     <nav>
         <div class="nav-wrapper container">
-            <a href="#" class="brand-logo">Pace Calculator</a>
+            <a href="#" class="brand-logo"><span class="hide-on-small-only">Pace Calculator</span><span class="hide-on-med-and-up">PC</span></a>
         </div>
     </nav>
     <div class="container main-content">
         <div class="row card">
             <div class="col s12 m12 event-form">
                 <div class="row">
-                    <div class="col s3">
-                            <h4 class="col s12 m12">Swim</h4>
+                    <div class="col s12 m3">
+                            <h4 class="col s12 m12 center-align">Swim</h4>
                     </div>
-                    <div class="input-field inline col s3">
+                    <div class="input-field inline col s12 m3">
                             <input type="number" placeholder="00" id="swim_distance" type="text" class="validate" min="0">
                             <label for="swim_distance">Distance in meters</label>
                     </div>
-                    <div class="input-field inline col s1">
+                    <div class="input-field inline col s4 m1">
                             <input type="number" placeholder="00" id="swim_hours" type="text" class="validate" min="0">
                             <label for="swim_hours">Hours</label>
                     </div>
-                    <div class="input-field inline col s1">
+                    <div class="input-field inline col s4 m1">
                             <input type="number" placeholder="00" id="swim_minutes" type="text" class="validate" min="0">
                             <label for="swim_minutes">Minutes</label>
                     </div>
-                    <div class="input-field inline col s1">
+                    <div class="input-field inline col s4 m1">
                             <input type="number" placeholder="00" id="swim_seconds" type="text" class="validate" min="0">
                             <label for="swim_seconds">Seconds</label>
                     </div>
-                    <div class="input-field inline col s1">
-                        <button class="btn btn-calculate-swim-pace">Calculate</button>
+                    <div class="input-field inline col s12 m3">
+                        <button class="btn btn-calculate-swim-pace">Calculate
+                            <i class="material-icons right">send</i>
+                        </button>
                     </div>
                 </div>
                 <div class="row">
@@ -55,26 +59,26 @@
         <div class="row card">
             <div class="col s12 m12 event-form">
                 <div class="row">
-                    <div class="col s3">
-                            <h4 class="col s12 m12">Bike</h4>
+                    <div class="col s12 m3">
+                            <h4 class="col s12 m12 center-align">Bike</h4>
                     </div>
-                    <div class="input-field inline col s3">
+                    <div class="input-field inline col s12 m3">
                             <input type="number" placeholder="00" id="bike_distance" type="text" class="validate" min="0" step="0.01">
                             <label for="bike_distance">Distance in kilometers</label>
                     </div>
-                    <div class="input-field inline col s1">
+                    <div class="input-field inline col s4 m1">
                             <input type="number" placeholder="00" id="bike_hours" type="text" class="validate" min="0">
                             <label for="bike_hours">Hours</label>
                     </div>
-                    <div class="input-field inline col s1">
+                    <div class="input-field inline col s4 m1">
                             <input type="number" placeholder="00" id="bike_minutes" type="text" class="validate" min="0">
                             <label for="bike_minutes">Minutes</label>
                     </div>
-                    <div class="input-field inline col s1">
+                    <div class="input-field inline col s4 m1">
                             <input type="number" placeholder="00" id="bike_seconds" type="text" class="validate" min="0">
                             <label for="bike_seconds">Seconds</label>
                     </div>
-                    <div class="input-field inline col s1">
+                    <div class="input-field inline col s12 m3">
                         <button class="btn btn-calculate-bike-pace">Calculate</button>
                     </div>
                 </div>
@@ -90,26 +94,26 @@
         <div class="row card">
             <div class="col s12 m12 event-form ">
                 <div class="row">
-                    <div class="col s3">
-                            <h4 class="col s12 m12">Run</h4>
+                    <div class="col s12 m3">
+                            <h4 class="col s12 m12 center-align">Run</h4>
                     </div>
-                    <div class="input-field inline col s3">
+                    <div class="input-field inline col s12 m3">
                             <input type="number" placeholder="00" id="run_distance" type="text" class="validate" min="0" step="0.01">
                             <label for="run_distance">Distance in kilometers</label>
                     </div>
-                    <div class="input-field inline col s1">
+                    <div class="input-field inline col s4 m1">
                             <input type="number" placeholder="00" id="run_hours" type="text" class="validate" min="0">
                             <label for="run_hours">Hours</label>
                     </div>
-                    <div class="input-field inline col s1">
+                    <div class="input-field inline col s4 m1">
                             <input type="number" placeholder="00" id="run_minutes" type="text" class="validate" min="0">
                             <label for="run_minutes">Minutes</label>
                     </div>
-                    <div class="input-field inline col s1">
+                    <div class="input-field inline col s4 m1">
                             <input type="number" placeholder="00" id="run_seconds" type="text" class="validate" min="0">
                             <label for="run_seconds">Seconds</label>
                     </div>
-                    <div class="input-field inline col s1">
+                    <div class="input-field inline col s12 m3">
                         <button class="btn btn-calculate-run-pace">Calculate</button>
                     </div>
                 </div>
