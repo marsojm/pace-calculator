@@ -55,6 +55,7 @@ class UIController {
             SWIM_SECONDS: '#swim_seconds',
             SWIM_PACE: '.swim-pace',
             SWIM_PACE_BTN: '.btn-calculate-swim-pace',
+            SWIM_FORM: '.swim__form',
 
             BIKE_DISTANCE: '#bike_distance',
             BIKE_HOURS: '#bike_hours',
@@ -62,13 +63,15 @@ class UIController {
             BIKE_SECONDS: '#bike_seconds',
             BIKE_PACE: '.bike-pace',
             BIKE_PACE_BTN: '.btn-calculate-bike-pace',
+            BIKE_FORM: '.bike__form',
 
             RUN_DISTANCE: '#run_distance',
             RUN_HOURS: '#run_hours',
             RUN_MINUTES: '#run_minutes',
             RUN_SECONDS: '#run_seconds',
             RUN_PACE: '.run-pace',
-            RUN_PACE_BTN: '.btn-calculate-run-pace'
+            RUN_PACE_BTN: '.btn-calculate-run-pace',
+            RUN_FORM: '.run__form'
         };
     }
 
@@ -180,11 +183,23 @@ class App {
             self.calculateSwimPace();
         });
 
+        document.querySelector(this.uiCtrl.uiElements.SWIM_FORM).addEventListener('input', function(e) {
+            self.calculateSwimPace();
+        });
+
         document.querySelector(this.uiCtrl.uiElements.BIKE_PACE_BTN).addEventListener('click', function() {
             self.calculateBikePace();
         });
 
+        document.querySelector(this.uiCtrl.uiElements.BIKE_FORM).addEventListener('input', function(e) {
+            self.calculateBikePace();
+        });
+
         document.querySelector(this.uiCtrl.uiElements.RUN_PACE_BTN).addEventListener('click', function() {
+            self.calculateRunPace();
+        });
+
+        document.querySelector(this.uiCtrl.uiElements.RUN_FORM).addEventListener('input', function(e) {
             self.calculateRunPace();
         });
     }
